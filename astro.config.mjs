@@ -12,7 +12,16 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   site: "https://ecomisto.org",
-  integrations: [react(), mdx(), icon()],
+  integrations: [
+    purgecss({
+      content: [
+        process.cwd() + "/src/**/*.{astro}", // Watching astro and vue sources (for SSR, read the note below)
+      ],
+    }),
+    react(),
+    mdx(),
+    icon(),
+  ],
   devToolbar: {
     enabled: false,
   },
